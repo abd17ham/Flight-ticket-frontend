@@ -40,9 +40,8 @@ const SearchScreen = () => {
     setLoading(false);
   };
 
-  console.log();
-
   const fetchFlights = async () => {
+    setLoading(true);
     const response = await fetch("api/v1/flights/");
     const data = await response.json();
     if (data.status === "success") {
@@ -52,6 +51,7 @@ const SearchScreen = () => {
     } else {
       NotificationManager.error(data.message, "Error");
     }
+    setLoading(false);
   };
   if (loading) {
     return <Loading />;
