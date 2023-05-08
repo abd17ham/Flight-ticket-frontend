@@ -24,9 +24,9 @@ const AdminBookingDashboard = () => {
       "https://hungry-crown-boa.cyclic.app/api/v1/bookings"
     );
     const data = await response.json();
-    console.log(data);
+    // console.log(data);
     if (data.status === "success") {
-      console.log(data.data);
+      // console.log(data.data);
       setBookings(data.data);
     } else {
       NotificationManager.error(data.message, "Error", 2000);

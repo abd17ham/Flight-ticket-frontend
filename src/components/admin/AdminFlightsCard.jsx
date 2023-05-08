@@ -46,7 +46,7 @@ const AdminFlightsCard = ({ flight }) => {
         setIsModelOpen(false);
         window.location.reload();
       } else {
-        console.log(data);
+        // console.log(data);
         NotificationManager.error(data.message, "Error");
       }
     } else {

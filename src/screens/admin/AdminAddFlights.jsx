@@ -40,7 +40,7 @@ const AdminAddFlights = () => {
       );
 
       const data = await response.json();
-      console.log(data);
+      // console.log(data);
       if (data.status === "success") {
         NotificationManager.success("Flight added successfully", "Success");
         navigate("/admin/flights");

@@ -3,7 +3,7 @@ import { format } from "date-fns";
 import { utcToZonedTime } from "date-fns-tz";
 
 const AdminBookingCard = ({ booking }) => {
-  console.log(booking);
+  // console.log(booking);
   let utcDate = new Date(booking.createdAt);
   let istDate = utcToZonedTime(utcDate, "Asia/Kolkata");
   let formattedDate = format(istDate, "EEE MMM dd yyyy HH:mm:ss");

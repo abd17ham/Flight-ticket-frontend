@@ -29,7 +29,7 @@ const SeatingDetails = () => {
         firstClassCount * firstClassPrice
     );
   }, [seats]);
-  console.log({ flightId, userId, seats });
+  // console.log({ flightId, userId, seats });
   const bookTickets = async () => {
     const response = await fetch(
       "https://hungry-crown-boa.cyclic.app/api/v1/bookings",

@@ -39,7 +39,7 @@ const Login = () => {
 
     const data = await response.json();
     if (data.status === "success") {
-      console.log(data);
+      // console.log(data);
       NotificationManager.success("Login Successful", "Success");
       localStorage.setItem(
         "user",

@@ -47,7 +47,7 @@ const SearchScreen = () => {
     );
     const data = await response.json();
     if (data.status === "success") {
-      console.log(data.data);
+      // console.log(data.data);
       dispatch(setFlights(data.data));
       setFilteredAirports(data.data);
     } else {

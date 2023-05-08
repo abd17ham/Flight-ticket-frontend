@@ -26,7 +26,7 @@ const Seats = () => {
         setSelected(selected.filter((seat) => seat !== e.target.id));
         dispatch(setSeats(selected.filter((seat) => seat !== e.target.id)));
       } else {
-        console.log(e.target.id);
+        // console.log(e.target.id);
         if (selected.length < 6) {
           if (e.target.id[0] === "P") {
             dispatch(setPremiumCount(premiumCount + 1));

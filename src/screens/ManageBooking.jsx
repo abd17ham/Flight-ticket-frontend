@@ -25,13 +25,13 @@ const ManageBooking = () => {
           },
         }
       );
-      console.log(response);
+      // console.log(response);
       const data = await response.json();
       if (data.status === "success") {
-        console.log(data.data);
+        // console.log(data.data);
         setMyBookings(data.data);
       } else {
-        console.log(data);
+        // console.log(data);
         NotificationManager.error(data.message, "Error");
       }
     }
@@ -39,7 +39,7 @@ const ManageBooking = () => {
   };
 
   const cancelBookingHandler = async () => {
-    console.log(deleteId);
+    // console.log(deleteId);
     const response = await fetch(
       `https://hungry-crown-boa.cyclic.app/api/v1/bookings/${deleteId}`,
       {

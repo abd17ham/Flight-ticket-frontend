@@ -48,7 +48,7 @@ const Signup = () => {
 
     const data = await response.json();
     if (data.status === "success") {
-      console.log(data);
+      // console.log(data);
       NotificationManager.success("User Created Successfully", "Success");
       localStorage.setItem(
         "user",

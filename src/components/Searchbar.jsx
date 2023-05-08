@@ -46,7 +46,7 @@ const SearchBar = ({ setFilteredAirports }) => {
       const formattedDate = `${year}-${month < 10 ? "0" : ""}${month}-${
         day < 10 ? "0" : ""
       }${day}`;
-      console.log("hi date", date1);
+      // console.log("hi date", date1);
       if (
         flight.originPlace === originPlace ||
         flight.destinationPlace === destinationPlace

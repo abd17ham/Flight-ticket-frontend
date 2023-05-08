@@ -66,7 +66,7 @@ const Home = () => {
     );
     const data = await response.json();
     if (data.status === "success") {
-      console.log(data.data);
+      // console.log(data.data);
       dispatch(setFlights(data.data));
     } else {
       NotificationManager.error(data.message, "Error");

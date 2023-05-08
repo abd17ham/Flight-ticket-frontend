@@ -55,7 +55,7 @@ const AdminFlightsDashboard = () => {
     );
     const data = await response.json();
     if (data.status === "success") {
-      console.log(data.data);
+      // console.log(data.data);
       dispatch(setFlights(data.data));
       setFilteredFlights(data.data);
     } else {
