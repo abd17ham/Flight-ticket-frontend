@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import Modal from "../Modal";
 import { format } from "date-fns";
 import { utcToZonedTime } from "date-fns-tz";
+import { NotificationManager } from "react-notifications";
+import useAuth from "../../hooks/useAuth";
 
 const AdminFlightsCard = ({ flight }) => {
+  const [loading, setLoading] = useState(false);
   const [viewPrice, setViewPrice] = useState(false);
   const [deleteFlightId, setDeleteFlightId] = useState("");
   const [isModelOpen, setIsModelOpen] = useState(false);
+
+  const { token } = useAuth();
 
   const handleViewPrice = (e) => {
     e.preventDefault();
@@ -25,17 +30,29 @@ const AdminFlightsCard = ({ flight }) => {
   departureTime = format(istDate, "HH:mm");
 
   const deleteFlight = async () => {
-    const response = await fetch(
-      `https://hungry-crown-boa.cyclic.app/api/v1/flights/${deleteFlightId}`,
-      {
-        method: "DELETE",
+    setLoading(true);
+    if (token) {
+      const response = await fetch(
+        `https://hungry-crown-boa.cyclic.app/api/v1/flights/${deleteFlightId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const data = await response.json();
+      if (data.status === "success") {
+        setIsModelOpen(false);
+        window.location.reload();
+      } else {
+        console.log(data);
+        NotificationManager.error(data.message, "Error");
       }
-    );
-    const data = await response.json();
-    if (data.status === "success") {
-      setIsModelOpen(false);
-      window.location.reload();
+    } else {
+      NotificationManager.error("You are not logged in", "Error");
     }
+    setLoading(false);
   };
 
   const handleDeleteFlight = (e) => {

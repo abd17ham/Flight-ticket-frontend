@@ -3,28 +3,37 @@ import Navbar from "../components/Navbar";
 import Modal from "../components/Modal";
 import { format } from "date-fns";
 import { utcToZonedTime } from "date-fns-tz";
-
 import "../css/screens/ManageBooking.css";
 import { NotificationManager } from "react-notifications";
 import Loading from "./Loading";
+import useAuth from "../hooks/useAuth";
 const ManageBooking = () => {
   const [myBookings, setMyBookings] = useState([]);
   const [loading, setLoading] = useState(false);
   const [cancelBooking, setCancelBooking] = useState(false);
   const [deleteId, setDeleteId] = useState(null);
+  const { token } = useAuth();
 
   const fetchMyBookings = async () => {
     setLoading(true);
-    const response = await fetch(
-      "https://hungry-crown-boa.cyclic.app/api/v1/bookings/mybooking"
-    );
-    const data = await response.json();
-    if (data.status === "success") {
-      console.log(data.data);
-      setMyBookings(data.data);
-    } else {
-      console.log(data);
-      NotificationManager.error(data.message, "Error");
+    if (token) {
+      const response = await fetch(
+        "https://hungry-crown-boa.cyclic.app/api/v1/bookings/mybooking",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(response);
+      const data = await response.json();
+      if (data.status === "success") {
+        console.log(data.data);
+        setMyBookings(data.data);
+      } else {
+        console.log(data);
+        NotificationManager.error(data.message, "Error");
+      }
     }
     setLoading(false);
   };
@@ -48,7 +57,7 @@ const ManageBooking = () => {
 
   useEffect(() => {
     fetchMyBookings();
-  }, []);
+  }, [token]);
 
   if (loading) {
     return <Loading />;

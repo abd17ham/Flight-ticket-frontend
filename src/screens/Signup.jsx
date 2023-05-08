@@ -4,8 +4,10 @@ import flight from "../assets/signup.jpeg";
 import logo from "../assets/logo.png";
 import { Link, useNavigate } from "react-router-dom";
 import { NotificationManager } from "react-notifications";
+import Loading from "./Loading";
 
 const Signup = () => {
+  const [loading, setLoading] = useState(false);
   const [userDetails, setUserDetails] = useState({
     name: "",
     email: "",
@@ -32,6 +34,7 @@ const Signup = () => {
   };
 
   const createUser = async () => {
+    setLoading(true);
     const response = await fetch(
       "https://hungry-crown-boa.cyclic.app/api/v1/users/signup",
       {
@@ -60,7 +63,12 @@ const Signup = () => {
     } else {
       NotificationManager.error(data.message, "Error");
     }
+    setLoading(false);
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div className="login-container">

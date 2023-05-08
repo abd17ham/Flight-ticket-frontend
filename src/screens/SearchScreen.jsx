@@ -42,7 +42,9 @@ const SearchScreen = () => {
 
   const fetchFlights = async () => {
     setLoading(true);
-    const response = await fetch("api/v1/flights/");
+    const response = await fetch(
+      "https://hungry-crown-boa.cyclic.app/api/v1/flights/"
+    );
     const data = await response.json();
     if (data.status === "success") {
       console.log(data.data);

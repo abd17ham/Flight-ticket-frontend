@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Navbar from "../../components/Navbar";
 import { NotificationManager } from "react-notifications";
 import { useNavigate } from "react-router-dom";
+import Loading from "../Loading";
+import useAuth from "../../hooks/useAuth";
 
 const AdminAddFlights = () => {
   const [flightDetails, setFlightDetails] = useState({
@@ -17,28 +19,38 @@ const AdminAddFlights = () => {
     arrivalDate: "",
   });
 
+  const { token } = useAuth();
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const addFlight = async () => {
-    const response = await fetch(
-      "https://hungry-crown-boa.cyclic.app/api/v1/flights/",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(flightDetails),
-      }
-    );
+    setLoading(true);
+    if (token) {
+      const response = await fetch(
+        "https://hungry-crown-boa.cyclic.app/api/v1/flights/",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + token,
+          },
+          body: JSON.stringify(flightDetails),
+        }
+      );
 
-    const data = await response.json();
-    console.log(data);
-    if (data.status === "success") {
-      NotificationManager.success("Flight added successfully", "Success");
-      navigate("/admin/flights");
+      const data = await response.json();
+      console.log(data);
+      if (data.status === "success") {
+        NotificationManager.success("Flight added successfully", "Success");
+        navigate("/admin/flights");
+      } else {
+        NotificationManager.error("Flight could not be added", "Error");
+      }
     } else {
-      NotificationManager.error("Flight could not be added", "Error");
+      NotificationManager.error("You are not logged in", "Error");
     }
+    setLoading(false);
   };
 
   const handleSubmit = (e) => {
@@ -54,6 +66,10 @@ const AdminAddFlights = () => {
   const handleChange = (e) => {
     setFlightDetails({ ...flightDetails, [e.target.name]: e.target.value });
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div>
