@@ -120,7 +120,14 @@ const AdminFlightsDashboard = () => {
         </div>
         <div className="admin-flight-card">
           {filteredFlights.map((flight) => {
-            return <AdminFlightsCard key={flight._id} flight={flight} />;
+            return (
+              <AdminFlightsCard
+                key={flight._id}
+                flight={flight}
+                loading={loading}
+                setLoading={setLoading}
+              />
+            );
           })}
         </div>
       </div>

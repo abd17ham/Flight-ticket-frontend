@@ -39,7 +39,7 @@ const ManageBooking = () => {
   };
 
   const cancelBookingHandler = async () => {
-    // console.log(deleteId);
+    setLoading(true);
     const response = await fetch(
       `https://hungry-crown-boa.cyclic.app/api/v1/bookings/${deleteId}`,
       {
@@ -53,6 +53,7 @@ const ManageBooking = () => {
     } else {
       NotificationManager.error(data.message, "Error");
     }
+    setLoading(false);
   };
 
   useEffect(() => {
