@@ -4,10 +4,8 @@ import { format } from "date-fns";
 import { utcToZonedTime } from "date-fns-tz";
 import { NotificationManager } from "react-notifications";
 import useAuth from "../../hooks/useAuth";
-import Loading from "../../screens/Loading";
 
-const AdminFlightsCard = ({ flight, loading, setLoading }) => {
-  const [loading, setLoading] = useState(false);
+const AdminFlightsCard = ({ flight, setLoading }) => {
   const [viewPrice, setViewPrice] = useState(false);
   const [deleteFlightId, setDeleteFlightId] = useState("");
   const [isModelOpen, setIsModelOpen] = useState(false);
@@ -46,7 +44,7 @@ const AdminFlightsCard = ({ flight, loading, setLoading }) => {
       setIsModelOpen(false);
       window.location.reload();
       // console.log(data);
-      NotificationManager.error(data.message, "Error");
+      // NotificationManager.error(data.message, "Error");
     } else {
       NotificationManager.error("You are not logged in", "Error");
     }
