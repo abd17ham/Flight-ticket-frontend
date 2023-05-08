@@ -1,0 +1,12 @@
+.seating-billing-container {
+  display: flex;
+
+  justify-content: space-around;
+  height: 100%;
+}
+
+.booking-flight-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 2rem 0 2rem 2rem;
+}

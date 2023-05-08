@@ -1,0 +1,88 @@
+.seating-details-container {
+  position: sticky;
+  top: 100px;
+  width: 400px;
+  margin: 2rem 0 1rem 0;
+  padding: 1rem;
+
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  transition: all 0.3s ease-in-out;
+}
+
+.seating-details-container:hover {
+  transform: scale(1.01);
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 4px 16px 8px;
+}
+
+.seating-details-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 1rem 0 1rem 0;
+}
+
+.seating-details-seat-number-container {
+  margin-top: 1rem;
+  margin-left: 2rem;
+  display: flex;
+  align-items: center;
+}
+.seating-details-seat-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding: 0 1rem 0 1rem;
+}
+
+.seating-fare-summary-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 1rem 0 1rem 0;
+}
+
+.seating-fare-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem 0 1rem;
+  margin: 1rem;
+}
+
+.seating-fare-name {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.seating-fare-subtotal {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.seating-fare-total-name {
+  color: #333;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.seating-fare-total {
+  color: #333;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.seating-button {
+  margin: 1rem 0 1rem 0;
+  margin-left: 6rem;
+  width: 200px;
+  height: 3rem;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--color-primary);
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}

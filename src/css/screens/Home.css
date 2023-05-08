@@ -1,0 +1,110 @@
+#home {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 110vh;
+}
+.container {
+  margin-top: 4rem;
+  margin-left: 4rem;
+  margin-bottom: 4rem;
+  width: 40rem;
+  height: 35rem;
+
+  background-color: var(--color-white);
+  border-radius: 10px;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+}
+
+.flight-icon {
+  width: 1.8rem;
+  color: var(--color-primary);
+}
+.heading-container {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0rem;
+}
+.title {
+  margin-top: 2rem;
+}
+
+.heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.search-text {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.search-container {
+  margin: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 2rem;
+}
+
+.toogle-icon {
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.toogle-icon img {
+  width: 1.5rem;
+}
+
+.select {
+  width: 15rem;
+}
+
+.home-input {
+  width: 15rem;
+  height: 2.1rem;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding-left: 1rem;
+  border: 1px solid #bbb;
+}
+
+.passengers-button {
+  padding: 0rem 0.5rem;
+  background: none;
+  border: 3px solid var(--color-primary);
+  color: var(--color-primary);
+  text-align: center;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.passengers-button.disabled {
+  color: var(--color-light-gray);
+  border: 3px solid var(--color-light-gray);
+}
+
+.passenger-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.search-button {
+  width: 10rem;
+  height: 2.5rem;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
