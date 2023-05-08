@@ -5,9 +5,11 @@ import "../css/components/SeatingDetails.css";
 import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { NotificationManager } from "react-notifications";
+import Loading from "../screens/Loading";
 
 const SeatingDetails = () => {
   const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const { id: flightId } = useParams();
@@ -31,6 +33,7 @@ const SeatingDetails = () => {
   }, [seats]);
   // console.log({ flightId, userId, seats });
   const bookTickets = async () => {
+    setLoading(true);
     const response = await fetch(
       "https://hungry-crown-boa.cyclic.app/api/v1/bookings",
       {
@@ -52,13 +55,16 @@ const SeatingDetails = () => {
     } else {
       NotificationManager.error(data.message, "Error");
     }
+    setLoading(false);
   };
 
   const bookHandler = (e) => {
     e.preventDefault();
     bookTickets();
   };
-
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div className="seating-details-container">
       <p className="seating-details-title">Seating Details</p>
