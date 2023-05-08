@@ -15,7 +15,9 @@ const ManageBooking = () => {
 
   const fetchMyBookings = async () => {
     setLoading(true);
-    const response = await fetch("/api/v1/bookings/mybooking");
+    const response = await fetch(
+      "https://hungry-crown-boa.cyclic.app/api/v1/bookings/mybooking"
+    );
     const data = await response.json();
     if (data.status === "success") {
       console.log(data.data);
@@ -29,9 +31,12 @@ const ManageBooking = () => {
 
   const cancelBookingHandler = async () => {
     console.log(deleteId);
-    const response = await fetch(`/api/v1/bookings/${deleteId}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `https://hungry-crown-boa.cyclic.app/api/v1/bookings/${deleteId}`,
+      {
+        method: "DELETE",
+      }
+    );
     const data = await response.json();
     if (data.status === "success") {
       NotificationManager.success("Successfully Cancelled", "Success");

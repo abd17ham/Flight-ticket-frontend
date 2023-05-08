@@ -26,13 +26,16 @@ const Login = () => {
 
   const loginUser = async () => {
     setLoading(true);
-    const response = await fetch("/api/v1/users/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userDetails),
-    });
+    const response = await fetch(
+      "https://hungry-crown-boa.cyclic.app/api/v1/users/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userDetails),
+      }
+    );
 
     const data = await response.json();
     if (data.status === "success") {

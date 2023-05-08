@@ -28,7 +28,9 @@ const SearchScreen = () => {
 
   const fetchAirports = async () => {
     setLoading(true);
-    const response = await fetch("api/v1/flights/airports");
+    const response = await fetch(
+      "https://hungry-crown-boa.cyclic.app/api/v1/flights/airports"
+    );
     const data = await response.json();
     if (data.status === "success") {
       dispatch(setAirports(data.data));

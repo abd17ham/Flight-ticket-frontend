@@ -16,13 +16,16 @@ const ResetPassword = () => {
   };
 
   const resetPassword = async () => {
-    const response = await fetch(`/api/v1/users/resetPassword/${token}`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userDetails),
-    });
+    const response = await fetch(
+      `https://hungry-crown-boa.cyclic.app/api/v1/users/resetPassword/${token}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userDetails),
+      }
+    );
     const data = await response.json();
     if (data.status === "success") {
       NotificationManager.success("Password Reset Successful", "Success");

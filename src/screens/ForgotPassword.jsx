@@ -6,13 +6,16 @@ const ForgotPassword = () => {
   const [email, setEmail] = useState("");
 
   const sendResetToken = async () => {
-    const response = await fetch("/api/v1/users/forgotpassword", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email }),
-    });
+    const response = await fetch(
+      "https://hungry-crown-boa.cyclic.app/api/v1/users/forgotpassword",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      }
+    );
     const data = await response.json();
     if (data.status === "success") {
       NotificationManager.success("Reset token sent to Mail", "Success");

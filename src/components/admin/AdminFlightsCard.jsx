@@ -25,9 +25,12 @@ const AdminFlightsCard = ({ flight }) => {
   departureTime = format(istDate, "HH:mm");
 
   const deleteFlight = async () => {
-    const response = await fetch(`/api/v1/flights/${deleteFlightId}`, {
-      method: "DELETE",
-    });
+    const response = await fetch(
+      `https://hungry-crown-boa.cyclic.app/api/v1/flights/${deleteFlightId}`,
+      {
+        method: "DELETE",
+      }
+    );
     const data = await response.json();
     if (data.status === "success") {
       setIsModelOpen(false);

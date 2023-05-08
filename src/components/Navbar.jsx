@@ -11,7 +11,9 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const handleLogout = async (e) => {
-    const response = await fetch("/api/v1/users/logout");
+    const response = await fetch(
+      "https://hungry-crown-boa.cyclic.app/api/v1/users/logout"
+    );
     const data = await response.json();
     if (data.status === "success") {
       NotificationManager.success("Logout Successful", "Success");

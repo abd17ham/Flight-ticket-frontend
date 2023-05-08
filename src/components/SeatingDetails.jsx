@@ -31,17 +31,20 @@ const SeatingDetails = () => {
   }, [seats]);
   console.log({ flightId, userId, seats });
   const bookTickets = async () => {
-    const response = await fetch("/api/v1/bookings", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        flightId,
-        userId,
-        seatNumbers: seats,
-      }),
-    });
+    const response = await fetch(
+      "https://hungry-crown-boa.cyclic.app/api/v1/bookings",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          flightId,
+          userId,
+          seatNumbers: seats,
+        }),
+      }
+    );
     const data = await response.json();
     if (data.status === "success") {
       NotificationManager.success("Ticket Booked Successfully", "Success");
