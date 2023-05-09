@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import { NotificationManager } from "react-notifications";
+import Loading from "./Loading";
 
 const ForgotPassword = () => {
+  const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
 
   const sendResetToken = async () => {
+    setLoading(true);
     const response = await fetch(
       "https://hungry-crown-boa.cyclic.app/api/v1/users/forgotpassword",
       {
@@ -22,12 +25,17 @@ const ForgotPassword = () => {
     } else {
       NotificationManager.error("Reset token could not be sent", "Error");
     }
+    setLoading(false);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     sendResetToken();
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div>

@@ -2,12 +2,14 @@ import React, { useState, u } from "react";
 import Navbar from "../components/Navbar";
 import { useNavigate, useParams } from "react-router-dom";
 import { NotificationManager } from "react-notifications";
+import Loading from "../screens/Loading";
 
 const ResetPassword = () => {
   const [userDetails, setUserDetails] = useState({
     password: "",
     passwordConfirm: "",
   });
+  const [loading, setLoading] = useState(false);
   const { token } = useParams();
   const navigate = useNavigate();
 
@@ -16,6 +18,7 @@ const ResetPassword = () => {
   };
 
   const resetPassword = async () => {
+    setLoading(true);
     const response = await fetch(
       `https://hungry-crown-boa.cyclic.app/api/v1/users/resetPassword/${token}`,
       {
@@ -33,12 +36,17 @@ const ResetPassword = () => {
     } else {
       NotificationManager.error(data.message, "Error");
     }
+    setLoading(false);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     resetPassword();
   };
+
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div>
       <Navbar />
