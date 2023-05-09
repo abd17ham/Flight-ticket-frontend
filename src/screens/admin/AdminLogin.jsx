@@ -9,8 +9,8 @@ import Loading from "../Loading";
 const AdminLogin = () => {
   const [loading, setLoading] = useState(false);
   const [userDetails, setUserDetails] = useState({
-    email: "",
-    password: "",
+    email: "admin@avesair.com",
+    password: "test123",
   });
 
   const changeHandler = (e) => {

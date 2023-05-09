@@ -7,9 +7,8 @@ import useAuth from "../hooks/useAuth";
 import { NotificationManager } from "react-notifications";
 import Loading from "../screens/Loading";
 
-const SeatingDetails = () => {
+const SeatingDetails = ({ setLoading }) => {
   const [total, setTotal] = useState(0);
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const { id: flightId } = useParams();
@@ -62,9 +61,7 @@ const SeatingDetails = () => {
     e.preventDefault();
     bookTickets();
   };
-  if (loading) {
-    return <Loading />;
-  }
+
   return (
     <div className="seating-details-container">
       <p className="seating-details-title">Seating Details</p>

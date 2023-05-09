@@ -74,7 +74,7 @@ const Booking = () => {
           <Seats />
         </div>
         <div>
-          <SeatingDetails />
+          <SeatingDetails setLoading={setLoading} />
         </div>
       </div>
     </div>
