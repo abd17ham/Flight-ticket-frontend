@@ -152,7 +152,7 @@ const FlightDetailsCard = ({ flight }) => {
                   <td className="flight-details-values">Free Cancellation</td>
                   <td className="flight-details-values flight-details-booking">
                     <p className="flight-detials-table-price">
-                      ₹ ${flight.premiumClassPrice}
+                      ₹ {flight.premiumClassPrice}
                     </p>
                     <button
                       className="flight-details-book-button"
