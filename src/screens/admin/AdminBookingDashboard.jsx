@@ -3,6 +3,7 @@ import Select from "react-select";
 import Navbar from "../../components/Navbar";
 import AdminBookingCard from "../../components/admin/AdminBookingCard";
 import { NotificationManager } from "react-notifications";
+import Loading from "../Loading";
 
 const AdminBookingDashboard = () => {
   const [search, setSearch] = useState("");
@@ -12,6 +13,7 @@ const AdminBookingDashboard = () => {
   });
 
   const [bookings, setBookings] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   let searchByOptions = [
     { label: "Date", value: "createdAt" },
@@ -20,6 +22,7 @@ const AdminBookingDashboard = () => {
   ];
 
   const fetchBookings = async () => {
+    setLoading(true);
     const response = await fetch(
       "https://hungry-crown-boa.cyclic.app/api/v1/bookings"
     );
@@ -31,11 +34,16 @@ const AdminBookingDashboard = () => {
     } else {
       NotificationManager.error(data.message, "Error", 2000);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
     fetchBookings();
   }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <div>
