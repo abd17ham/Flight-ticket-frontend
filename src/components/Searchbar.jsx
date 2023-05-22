@@ -8,28 +8,14 @@ import {
 } from "../features/filterSlice";
 import { useSelector, useDispatch } from "react-redux";
 
-const SearchBar = ({ setFilteredAirports }) => {
+const SearchBar = ({ setFilteredFlights }) => {
   const dispatch = useDispatch();
 
   const flights = useSelector((state) => state.flight.flights);
   const airports = useSelector((state) => state.flight.airports);
-  const { originPlace, destinationPlace, departureDate, classValue } =
-    useSelector((state) => state.filter);
-
-  let classValues = [
-    {
-      label: "Economy",
-      value: "economy",
-    },
-    {
-      label: "Business",
-      value: "business",
-    },
-    {
-      label: "First Class",
-      value: "first-class",
-    },
-  ];
+  const { originPlace, destinationPlace, departureDate } = useSelector(
+    (state) => state.filter
+  );
 
   const searchHandle = (e) => {
     e.preventDefault();
@@ -46,21 +32,22 @@ const SearchBar = ({ setFilteredAirports }) => {
       const formattedDate = `${year}-${month < 10 ? "0" : ""}${month}-${
         day < 10 ? "0" : ""
       }${day}`;
-      // console.log("hi date", date1);
       if (
         flight.originPlace === originPlace ||
         flight.destinationPlace === destinationPlace
       ) {
+        console.log("In the filter", date1, formattedDate);
         if (!date1) {
           return flight;
         }
         if (date1 === formattedDate) {
+          console.log("selected");
           return flight;
         }
       }
     });
 
-    setFilteredAirports(filterFlight);
+    setFilteredFlights(filterFlight);
   };
 
   return (
@@ -100,19 +87,6 @@ const SearchBar = ({ setFilteredAirports }) => {
           onChange={(e) => {
             dispatch(setDepartureDate(e.target.value));
           }}
-        />
-      </div>
-      <div>
-        <p className="search-bar-text">Class :</p>
-        <Select
-          className="select search-select"
-          required
-          placeholder="Select Class"
-          defaultValue={{ label: classValue, value: classValue }}
-          onChange={(e) => {
-            dispatch(setClassValue(e.value));
-          }}
-          options={classValues}
         />
       </div>
       <div>

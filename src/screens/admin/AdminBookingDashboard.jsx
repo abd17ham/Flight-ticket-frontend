@@ -8,18 +8,15 @@ import Loading from "../Loading";
 const AdminBookingDashboard = () => {
   const [search, setSearch] = useState("");
   const [searchBy, setSearchBy] = useState({
-    label: "Date",
-    value: "createdAt",
+    label: "Flight Name",
+    value: "flightNumber",
   });
 
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [filteredBookings, setFilteredBookings] = useState([]);
 
-  let searchByOptions = [
-    { label: "Date", value: "createdAt" },
-    { label: "Flight Number", value: "flightNumber" },
-    { label: "Time", value: "time" },
-  ];
+  let searchByOptions = [{ label: "Flight Name", value: "flightNumber" }];
 
   const fetchBookings = async () => {
     setLoading(true);
@@ -31,10 +28,23 @@ const AdminBookingDashboard = () => {
     if (data.status === "success") {
       // console.log(data.data);
       setBookings(data.data);
+      setFilteredBookings(data.data);
     } else {
       NotificationManager.error(data.message, "Error", 2000);
     }
     setLoading(false);
+  };
+
+  const filterBookings = () => {
+    let filteredBookings = bookings.filter((booking) => {
+      if (searchBy.value === "flightNumber") {
+        return booking.flight.name.toLowerCase().includes(search.toLowerCase());
+      } else if (searchBy.value === "time") {
+        return booking.time.includes(search);
+      }
+    });
+    console.log(filteredBookings);
+    setFilteredBookings(filteredBookings);
   };
 
   useEffect(() => {
@@ -70,10 +80,12 @@ const AdminBookingDashboard = () => {
                 setSearch(e.target.value);
               }}
             />
-            <button className="search-button">Search</button>
+            <button className="search-button" onClick={filterBookings}>
+              Search
+            </button>
           </div>
           <div className="admin-booking-card">
-            {bookings.map((booking) => {
+            {filteredBookings.map((booking) => {
               return <AdminBookingCard key={booking._id} booking={booking} />;
             })}
           </div>

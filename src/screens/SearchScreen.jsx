@@ -10,7 +10,7 @@ import { setAirports, setFlights } from "../features/flightSlice";
 import Loading from "./Loading";
 
 const SearchScreen = () => {
-  const [fliteredAirports, setFilteredAirports] = useState([]);
+  const [filteredFlights, setFilteredFlights] = useState([]);
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
@@ -21,9 +21,7 @@ const SearchScreen = () => {
       fetchAirports();
     }
 
-    if (flights.length <= 0) {
-      fetchFlights();
-    }
+    fetchFlights();
   }, [airports]);
 
   const fetchAirports = async () => {
@@ -49,7 +47,7 @@ const SearchScreen = () => {
     if (data.status === "success") {
       // console.log(data.data);
       dispatch(setFlights(data.data));
-      setFilteredAirports(data.data);
+      setFilteredFlights(data.data);
     } else {
       NotificationManager.error(data.message, "Error");
     }
@@ -65,22 +63,22 @@ const SearchScreen = () => {
       <SearchBar
         loading={loading}
         setLoading={setLoading}
-        setFilteredAirports={setFilteredAirports}
+        setFilteredFlights={setFilteredFlights}
       />
       <div className="filter-flight-card-container">
         <FilterSidebar
-          fliteredAirports={fliteredAirports}
-          setFilteredAirports={setFilteredAirports}
+          filteredFlights={filteredFlights}
+          setFilteredFlights={setFilteredFlights}
         />
 
         <div>
-          {fliteredAirports.length <= 0 && (
+          {filteredFlights.length <= 0 && (
             <div className="flight-details-card">
-              <h2>No Airplanes</h2>
+              <h2 style={{ textAlign: "center" }}>No Airplanes</h2>
             </div>
           )}
-          {fliteredAirports.length >= 1 &&
-            fliteredAirports.map((flight) => {
+          {filteredFlights.length >= 1 &&
+            filteredFlights.map((flight) => {
               return <FlightDetailsCard key={flight._id} flight={flight} />;
             })}
         </div>

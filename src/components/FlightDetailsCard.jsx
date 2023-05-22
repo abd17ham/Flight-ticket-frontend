@@ -38,7 +38,11 @@ const FlightDetailsCard = ({ flight }) => {
             alt="aeroplane-logo"
           />
           <div>
-            <p className="flight-details-flight-name">{flight.name}</p>
+            <p className="flight-details-flight-name">
+              {flight.name.length > 10
+                ? flight.name.substring(0, 10) + "..."
+                : flight.name}
+            </p>
             <span>{flight.flightNumber}</span>
           </div>
         </div>

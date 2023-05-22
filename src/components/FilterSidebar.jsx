@@ -3,7 +3,7 @@ import { RangeSlider } from "rsuite";
 
 import "../css/components/FilterSidebar.css";
 
-const FilterSidebar = ({ fliteredAirports, setFilteredAirports }) => {
+const FilterSidebar = ({ filteredFlights, setFilteredAirports }) => {
   const [priceRange, setPriceRange] = useState([7000, 35950]);
 
   const [time6AmSelected, setTime6AmSelected] = useState(false);
@@ -11,7 +11,7 @@ const FilterSidebar = ({ fliteredAirports, setFilteredAirports }) => {
   const [timeAfter6PmSelected, setTimeAfter6PmSelected] = useState(false);
 
   const handleApply = () => {
-    let filtered = fliteredAirports.filter(
+    let filtered = filteredFlights.filter(
       (airport) =>
         airport.economyPrice >= priceRange[0] &&
         airport.economyPrice <= priceRange[1]

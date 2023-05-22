@@ -8,7 +8,6 @@ import { setFlights } from "../../features/flightSlice";
 import "../../css/screens/AdminFlightsDashboard.css";
 import { useNavigate } from "react-router-dom";
 import Loading from "../Loading";
-import { set } from "date-fns";
 
 const AdminFlightsDashboard = () => {
   const [loading, setLoading] = useState(false);
@@ -69,7 +68,7 @@ const AdminFlightsDashboard = () => {
     } else {
       setFilteredFlights(flights);
     }
-  }, []);
+  }, [flights]);
 
   if (loading) {
     return <Loading />;
