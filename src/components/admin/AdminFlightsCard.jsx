@@ -67,7 +67,12 @@ const AdminFlightsCard = ({ flight, setLoading }) => {
               alt="aeroplane-logo"
             />
             <div>
-              <p className="flight-details-flight-name">{flight.name}</p>
+              <p className="flight-details-flight-name">
+                {" "}
+                {flight.name.length > 15
+                  ? flight.name.substring(0, 10) + "..."
+                  : flight.name}
+              </p>
               <span>{flight.flightNumber}</span>
             </div>
           </div>

@@ -23,10 +23,18 @@ const Seats = () => {
     if (!unavailable[e.target.id]) {
       if (e.target.classList.contains("selected")) {
         e.target.classList.remove("selected");
+
         setSelected(selected.filter((seat) => seat !== e.target.id));
+        console.log(selected.filter((seat) => seat !== e.target.id));
         dispatch(setSeats(selected.filter((seat) => seat !== e.target.id)));
+        if (e.target.id[0] === "P") {
+          dispatch(setPremiumCount(premiumCount - 1));
+        } else if (e.target.id[0] === "F") {
+          dispatch(setFirstClassCount(firstClassCount - 1));
+        } else if (e.target.id[0] === "E") {
+          dispatch(setEconomyCount(economyCount - 1));
+        }
       } else {
-        // console.log(e.target.id);
         if (selected.length < 6) {
           if (e.target.id[0] === "P") {
             dispatch(setPremiumCount(premiumCount + 1));

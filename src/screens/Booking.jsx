@@ -14,7 +14,6 @@ import {
 import { NotificationManager } from "react-notifications";
 import "../css/screens/Booking.css";
 import Loading from "./Loading";
-import useAuth from "../hooks/useAuth";
 
 const Booking = () => {
   const [loading, setLoading] = useState(false);
@@ -74,7 +73,7 @@ const Booking = () => {
           <Seats />
         </div>
         <div>
-          <SeatingDetails setLoading={setLoading} />
+          <SeatingDetails setLoading={setLoading} key={"seats-booking"} />
         </div>
       </div>
     </div>

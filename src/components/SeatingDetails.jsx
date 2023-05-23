@@ -70,7 +70,9 @@ const SeatingDetails = ({ setLoading }) => {
         <div className="seating-details-seat-number-container">
           {seats.map((seat) => {
             return (
-              <span className="seating-details-seat-number">{seat} , </span>
+              <span className="seating-details-seat-number" key={seat}>
+                {seat} ,{" "}
+              </span>
             );
           })}
         </div>
