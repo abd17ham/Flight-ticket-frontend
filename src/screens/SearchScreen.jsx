@@ -66,10 +66,10 @@ const SearchScreen = () => {
         setFilteredFlights={setFilteredFlights}
       />
       <div className="filter-flight-card-container">
-        <FilterSidebar
+        {/* <FilterSidebar
           filteredFlights={filteredFlights}
           setFilteredFlights={setFilteredFlights}
-        />
+        /> */}
 
         <div>
           {filteredFlights.length <= 0 && (
