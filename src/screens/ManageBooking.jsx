@@ -28,10 +28,8 @@ const ManageBooking = () => {
       // console.log(response);
       const data = await response.json();
       if (data.status === "success") {
-        // console.log(data.data);
         setMyBookings(data.data);
       } else {
-        // console.log(data);
         NotificationManager.error(data.message, "Error");
       }
     }
@@ -70,6 +68,11 @@ const ManageBooking = () => {
         <Navbar />
         <div className="manage-booking-container">
           <p className="manage-booking-title">My Bookings :</p>
+          {myBookings.length === 0 && (
+            <div>
+              <p className="manage-booking-no-booking">No Bookings Found</p>
+            </div>
+          )}
           {myBookings.map((booking) => {
             let utcDate = new Date(booking.createdAt);
 

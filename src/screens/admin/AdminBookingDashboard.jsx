@@ -85,6 +85,9 @@ const AdminBookingDashboard = () => {
             </button>
           </div>
           <div className="admin-booking-card">
+            {filteredBookings.length === 0 && (
+              <p className="no-bookings">No Bookings Found</p>
+            )}
             {filteredBookings.map((booking) => {
               return <AdminBookingCard key={booking._id} booking={booking} />;
             })}

@@ -11,17 +11,24 @@
   font-weight: 700;
   margin-bottom: 1rem;
   object-fit: cover;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  left: 0;
 }
 
 .login-right-section {
   width: 100%;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: scroll;
 }
 
+.login-right-section::-webkit-scrollbar {
+  display: none;
+}
 .login-title {
   font-size: 2rem;
   font-weight: 600;

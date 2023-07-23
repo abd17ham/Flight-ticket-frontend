@@ -1,13 +1,18 @@
 #home {
+}
+
+.background-wrapper {
+  min-height: 110vh;
+  background-image: url("../../assets/home.jpeg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 110vh;
 }
+
 .container {
   margin-top: 4rem;
   margin-left: 4rem;
-  margin-bottom: 4rem;
+
   width: 40rem;
   height: 35rem;
 

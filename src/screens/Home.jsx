@@ -57,7 +57,9 @@ const Home = () => {
       }
       setLoading(false);
     };
+    document.title = "AvesAir - Home";
     fetchAirports();
+    console.log(process.env.REACT_BACKEND_URL);
   }, []);
 
   const fetchFlights = async () => {
@@ -140,7 +142,7 @@ const Home = () => {
                 <input
                   type="date"
                   value={departureDate}
-                  placeholderText="Select Date"
+                  placeholder="Select Date"
                   className="home-input date"
                   onChange={(date) => {
                     dispatch(setDepartureDate(date.target.value));
