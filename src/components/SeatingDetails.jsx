@@ -34,7 +34,7 @@ const SeatingDetails = ({ setLoading }) => {
   const bookTickets = async () => {
     setLoading(true);
     const response = await fetch(
-      "https://hungry-crown-boa.cyclic.app/api/v1/bookings",
+      "http://localhost:8000/api/v1/bookings",
       {
         method: "POST",
         headers: {

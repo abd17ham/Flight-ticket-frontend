@@ -21,7 +21,7 @@ const AdminBookingDashboard = () => {
   const fetchBookings = async () => {
     setLoading(true);
     const response = await fetch(
-      "https://hungry-crown-boa.cyclic.app/api/v1/bookings"
+      "http://localhost:8000/api/v1/bookings"
     );
     const data = await response.json();
     // console.log(data);

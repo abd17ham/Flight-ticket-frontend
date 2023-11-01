@@ -27,7 +27,7 @@ const Booking = () => {
   const fetchFlight = async () => {
     setLoading(true);
     const response = await fetch(
-      "https://hungry-crown-boa.cyclic.app/api/v1/flights/" + id
+      "http://localhost:8000/api/v1/flights/" + id
     );
     const data = await response.json();
     if (data.status === "success") {

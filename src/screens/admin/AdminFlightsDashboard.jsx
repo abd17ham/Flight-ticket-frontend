@@ -50,7 +50,7 @@ const AdminFlightsDashboard = () => {
 
   const fetchFlights = async () => {
     const response = await fetch(
-      "https://hungry-crown-boa.cyclic.app/api/v1/flights/"
+      "http://localhost:8000/api/v1/flights/"
     );
     const data = await response.json();
     if (data.status === "success") {

@@ -27,7 +27,7 @@ const SearchScreen = () => {
   const fetchAirports = async () => {
     setLoading(true);
     const response = await fetch(
-      "https://hungry-crown-boa.cyclic.app/api/v1/flights/airports"
+      "http://localhost:8000/api/v1/flights/airports"
     );
     const data = await response.json();
     if (data.status === "success") {
@@ -41,7 +41,7 @@ const SearchScreen = () => {
   const fetchFlights = async () => {
     setLoading(true);
     const response = await fetch(
-      "https://hungry-crown-boa.cyclic.app/api/v1/flights/"
+      "http://localhost:8000/api/v1/flights/"
     );
     const data = await response.json();
     if (data.status === "success") {

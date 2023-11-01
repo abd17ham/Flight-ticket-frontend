@@ -18,7 +18,7 @@ const ManageBooking = () => {
     setLoading(true);
     if (token) {
       const response = await fetch(
-        "https://hungry-crown-boa.cyclic.app/api/v1/bookings/mybooking",
+        "http://localhost:8000/api/v1/bookings/mybooking",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -39,7 +39,7 @@ const ManageBooking = () => {
   const cancelBookingHandler = async () => {
     setLoading(true);
     const response = await fetch(
-      `https://hungry-crown-boa.cyclic.app/api/v1/bookings/${deleteId}`,
+      `http://localhost:8000/api/v1/bookings/${deleteId}`,
       {
         method: "DELETE",
       }

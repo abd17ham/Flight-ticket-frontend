@@ -28,7 +28,7 @@ const AdminAddFlights = () => {
     setLoading(true);
     if (token) {
       const response = await fetch(
-        "https://hungry-crown-boa.cyclic.app/api/v1/flights/",
+        "http://localhost:8000/api/v1/flights/",
         {
           method: "POST",
           headers: {

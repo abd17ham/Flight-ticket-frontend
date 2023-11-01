@@ -27,7 +27,7 @@ const Login = () => {
   const loginUser = async () => {
     setLoading(true);
     const response = await fetch(
-      "https://hungry-crown-boa.cyclic.app/api/v1/users/login",
+      "http://localhost:8000/api/v1/users/login",
       {
         method: "POST",
         headers: {

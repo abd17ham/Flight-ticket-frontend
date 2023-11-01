@@ -20,7 +20,7 @@ const ResetPassword = () => {
   const resetPassword = async () => {
     setLoading(true);
     const response = await fetch(
-      `https://hungry-crown-boa.cyclic.app/api/v1/users/resetPassword/${token}`,
+      `http://localhost:8000/api/v1/users/resetPassword/${token}`,
       {
         method: "POST",
         headers: {

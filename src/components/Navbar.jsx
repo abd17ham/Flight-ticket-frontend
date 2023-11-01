@@ -12,7 +12,7 @@ const Navbar = () => {
 
   const handleLogout = async (e) => {
     const response = await fetch(
-      "https://hungry-crown-boa.cyclic.app/api/v1/users/logout"
+      "http://localhost:8000/api/v1/users/logout"
     );
     const data = await response.json();
     if (data.status === "success") {
